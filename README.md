@@ -9,7 +9,7 @@ Add the following code to config file Yii2
 	'menu' => [
             'class' => 'vendor\dmsylvio\menu\Menu',
         ],
-	]
+]
 ```
 
 ## Configuration
