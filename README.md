@@ -1,31 +1,36 @@
-yii2-extension
-==============
-Connect Yii 2 application to a Identity Provider for Single Sign On
-
-Installation
-------------
-
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
-
-Either run
-
+## Installation
 ```
-php composer.phar require --prefer-dist dmsylvio/menu "*"
+composer require --prefer-dist dmsylvio/menu "*"
 ```
 
-or add
-
+Add the following code to config file Yii2
+```php
+'modules' => [
+	'menu' => [
+            'class' => 'vendor\dmsylvio\menu\Menu',
+        ],
+	]
 ```
-"dmsylvio/menu": "*"
+
+## Configuration
+
+### 1. Create database schema
+
+Make sure that you have properly configured `db` application component and run the following command:
+
+```bash
+$ php yii migrate/up --migrationPath=@vendor/dmsylvio/menu/migrations
 ```
 
-to the require section of your `composer.json` file.
-
-
-Usage
------
-
-Once the extension is installed, simply use it in your code by  :
+### 2. Add the following code to view layout file Yii2
 
 ```php
-<?= \vendor\dmsylvio\AutoloadExample::widget(); ?>```
+use vendor\dmsylvio\menu\Menu;
+
+// $arr (principal menus id)
+echo Menu::get_menu_tree($arr = [3,20,38,46,54]);
+
+```
+
+### 3. Getting started
+/menu/creator
